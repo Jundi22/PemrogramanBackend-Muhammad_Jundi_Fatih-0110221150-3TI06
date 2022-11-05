@@ -45,7 +45,7 @@ class StudentController extends Controller
         return response()->json($data, 201);
     }
     
-    //function update / put
+    //function update atau put
     public function update(Request $request, $id){
         $input=[
             'nama' => $request->nama,
@@ -65,7 +65,7 @@ class StudentController extends Controller
        return response()->json($data,200);
     }
 
-    //function destroy/delete
+    //function destroy atau delete
     public function destroy($id){
         $student = Student::FindorFail($id);
         if($student->delete()){
