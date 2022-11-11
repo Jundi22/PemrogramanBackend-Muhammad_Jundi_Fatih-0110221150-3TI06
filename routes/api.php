@@ -34,3 +34,9 @@ Route::post('/Students', [StudentController::class, 'store']);
 Route::put('/Students/{id}', [StudentController::class, 'update']);
 
 Route::delete('/Students/{id}', [StudentController::class, 'destroy']);
+
+//mendapatkan detail resource student
+Route::get('Students/{id}', [StudentController::class, 'show']);
+
+//memperbarui resource student
+//Route::put('Students/{id}', [StudentController::class, 'updat']);
