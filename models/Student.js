@@ -36,6 +36,38 @@ class Student{
         });
     }
 
+    static find(id){
+        // melakukan query berdasarkan id
+        return new Promise((resolve, reject)=>{
+            const sql = "SELECT * FROM students WHERE id = ?";
+            db.query(sql,id,(err,results)=>{
+                const[student] = results;
+                resolve(student);
+            });
+        });
+    };
+
+    // mengupdate data astudents
+    static async update(id, data){
+        await new Promise ((resolve, reject)=>{
+            const sql = "UPDATE students SET ? WHERE id = ?";
+            db.query(sql,[data,id], (err, results)=>{
+                resolve(results);
+            });
+        });
+        const student = await this.find(id);
+        return student;
+    };
+
+    // menghapus data students
+    static delete(id){
+        return new Promise((resolve,reject) => {
+            const sql = "DELETE FROM students WHERE id = ?";
+            db.query(sql, id, (err,results) => {
+                resolve(results);
+            });
+        });
+    }
 }
 
 // export class student
